@@ -1,11 +1,11 @@
 <script setup>
   import {computed, ref} from 'vue'
-  import Boton from './UI/Boton.vue';
-  import { titulosEventos } from '../helpers/Config';
   import useFormatCadena from '../composables/useFormatoMoneda'
   import List from './UI/List.vue';
   import ModalGastos from './UI/Modal/ModalGastos.vue';
   import { estiloCategoria } from '../helpers/Config';
+  import DatosEventos from './DatosEventos.vue';
+  import BarraInicioEvento from './BarraInicioEvento.vue';
 
   const { formatearCadena } = useFormatCadena()
 
@@ -79,100 +79,19 @@
     @state-modal="stateModal" 
     @tomar-data="(data) => handleGasto(data)" 
   />
-  <div class="py-25 px-10 w-full flex flex-col justify-center items-center gap-7">
-    <div
-      class="flex flex-row w-full justify-between items-center"
-    >
-      <div
-        class="flex flex-row gap-3"
-      >
-        <i 
-          @click="emit('gestion-evento')"
-          class="
-            cursor-pointer hover:text-white/80
-            text-4xl text-white bi bi-arrow-left-short
-          "
-        ></i>
-        <div
-          class="flex flex-col justify-start"
-        >
-          <p 
-            class="text-xl capitalize poppins-normal text-white"
-          >{{ props.data.nombre }}</p>
-          <p
-            class="text-ms capitalize poppins-normal text-white/50"
-          >{{ props.data.fecha }}</p>
-        </div>
-      </div>
-      <Boton 
-        v-if="((gastadoEvento / props.data.presupuesto) * 100) !== 100"
-        @click="stateModal"
-        icono="bi bi-plus"
-        color="bg-slate-600 text-white hover:bg-slate-500 cursor-not-allowed"
-      >Agregar Gasto</Boton>
-    </div>
+  <div class="py-25 px-5 md:px-10 w-full flex flex-col justify-center items-center gap-7">
+    <BarraInicioEvento 
+      @gestion-evento="emit('gestion-evento')"
+      :data="props.data"
+      :gastadoEvento="gastadoEvento"
+    />
+
     <!--  -->
-    <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-6">
-      <div
-        v-for="(item, index) in titulosEventos"
-        :key="index"
-        class="bg-white px-6 py-5 h-44 rounded-2xl cont-secundary shadow-sm flex flex-col justify-between border border-gray-100"
-      >
-        <div class="flex flex-row w-full justify-between items-center">
-          <p class="text-gray-600 font-medium uppercase text-xs tracking-wider">
-            {{ item.nombre }}
-          </p>
-          <i :class="[item.icono, 'text-xl text-gray-600']"></i>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <p 
-            v-if="item.nombre === 'Presupuesto'"
-            class="text-2xl poppins-normal text-gray-700"
-          >
-            {{ formatearCadena(props.data.presupuesto) }}
-          </p>
-
-          <div v-if="item.nombre === 'Gastado'" class="mt-2 flex flex-row w-full justify-between items-center">
-            <p class="text-xl md:text-2xl poppins-normal text-gray-700">
-              {{formatearCadena(gastadoEvento)}}
-            </p>
-            <p 
-              class="text-[12px] text-gray-600 mt-1 uppercase hidden md:block"
-              :class="{'text-red-600' : (gastadoEvento / props.data.presupuesto) * 100 > 80,
-                'text-green-600' : (gastadoEvento / props.data.presupuesto) * 100 < 80 && (gastadoEvento / props.data.presupuesto) * 100 > 0
-              }"
-            >
-              {{ ((gastadoEvento / props.data.presupuesto) * 100) }}% consumido
-            </p>
-            <p 
-              class="text-[12px] text-gray-600 mt-1 uppercase md:hidden"
-              :class="{'text-red-600' : (gastadoEvento / props.data.presupuesto) * 100 > 80,
-                'text-green-600' : (gastadoEvento / props.data.presupuesto) * 100 < 80 && (gastadoEvento / props.data.presupuesto) * 100 > 0
-              }"
-            >
-              {{ ((gastadoEvento / props.data.presupuesto) * 100) }}%
-            </p>
-          </div>
-          
-          <div 
-            v-if="item.nombre === 'Restante'"
-            class="flex flex-row w-full justify-between items-center "
-            :class="(props.data.presupuesto - gastadoEvento) < 0 ? 'text-red-500' : 'text-green-600'"
-          >
-            <p class="text-2xl poppins-normal">
-              {{formatearCadena(props.data.presupuesto - gastadoEvento)}}
-            </p>
-            <p 
-              v-if="item.nombre === 'Restante'"
-              class="text-xs font-medium hidden md:block"
-            >
-              {{ (props.data.presupuesto - gastadoEvento) < 0 ? 'Presupuesto excedido' : 'Disponible' }}
-            </p>
-          </div>
-         
-        </div>
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-4 md:gap-6">
+      <DatosEventos
+        :data="props.data"
+        :gastadoEvento="gastadoEvento"
+      />
     </div>
     <!--  -->
     <div class="flex flex-col md:flex-row gap-4 w-full">

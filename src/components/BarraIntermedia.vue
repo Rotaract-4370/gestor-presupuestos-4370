@@ -15,7 +15,7 @@
         class="bi bi-grid text-2xl font-extrabold text-gray-100"
       ></i>
       <p
-        class="text-gray-100 text-xl md:text-2xl poppins-bold"
+        class="text-gray-100 text-ms md:text-2xl poppins-bold"
       >Mis Eventos</p>
     </div>
     <Boton 

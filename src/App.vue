@@ -87,7 +87,7 @@ watch(listaEventos, () => {
     />
     <div v-if="!gestion">
       <div
-        class="flex-col grid grid-cols-2 lg:grid-cols-4 md:flex-row justify-evenly gap-4 items-center p-10"
+        class="flex-col grid grid-cols-2 lg:grid-cols-4 md:flex-row justify-evenly gap-4 items-center p-5 md:p-10"
         :class="
           {' mt-19': modal === false}
         "
@@ -109,7 +109,7 @@ watch(listaEventos, () => {
       </div>
       <BarraIntermedia @state-modal="stateModal" :modal="modal"/>
       <div 
-        class="grid w-full grid-cols-1 md:grid-cols-3 gap-4 p-10"
+        class="grid w-full grid-cols-1 md:grid-cols-3 gap-4 p-5 md:p-10"
       >
         <div 
           v-for="(item, index) in listaEventos"
