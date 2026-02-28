@@ -82,6 +82,7 @@
   <div class="py-25 px-5 md:px-10 w-full flex flex-col justify-center items-center gap-7">
     <BarraInicioEvento 
       @gestion-evento="emit('gestion-evento')"
+      @state-modal="stateModal"
       :data="props.data"
       :gastadoEvento="gastadoEvento"
     />

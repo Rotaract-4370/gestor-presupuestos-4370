@@ -4,11 +4,7 @@
     data: {type: Object, default: () => ({})},
     gastadoEvento: {type: Number, default: 0}
   })
-  const emit = defineEmits(['gestion-evento'])
-
-  const stateModal = () => {
-    emit('gestion-evento')
-  }
+  const emit = defineEmits(['gestion-evento', 'state-modal'])
 </script>
 
 <template>
@@ -38,7 +34,7 @@
     </div>
     <Boton 
       v-if="((gastadoEvento / props.data.presupuesto) * 100) !== 100"
-      @click="stateModal"
+      @click="emit('state-modal')"
       icono="bi bi-plus"
       color="bg-slate-600 text-white hover:bg-slate-500 cursor-not-allowed"
     >Agregar Gasto</Boton>

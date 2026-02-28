@@ -9,7 +9,7 @@
   <div
     class="
       py-2 px-4 md:text-ms text-[13px] rounded-xl flex justify-center items-center
-      transition-all duration-300 active:scale-95 active:duration-initial disabled:cursor-not-allowed
+      transition-all duration-75 active:scale-95 active:duration-initial disabled:cursor-not-allowed
       cursor-pointer
     "
     :class="`${props.color} ${props.icono ? 'gap-3' : ''}`"
