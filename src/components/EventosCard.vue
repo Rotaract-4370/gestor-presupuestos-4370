@@ -21,7 +21,7 @@ const { formatearCadena } = useFormatCadena()
     class="p-6 flex flex-col justify-between h-full w-full poppins-normal"
   > 
       <div class="flex flex-row justify-between">
-      <h3 class="text-xl font-bold text-gray-800 poppins-bold">{{ props.evento.nombre }}</h3>
+      <h3 class="text-xl font-bold text-gray-800 poppins-bold truncate">{{ props.evento.nombre }}</h3>
       <i 
         @click="$emit('eliminar-evento', props.evento)"
         class="

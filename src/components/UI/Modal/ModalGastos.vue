@@ -42,19 +42,10 @@
     // Corregido: Usamos nuevoGasto (sin .value)
     if (Object.values(nuevoGasto).some(value => !value)) return tipoAlerta('Campos vacios')
     if (nuevoGasto.monto === 0) return tipoAlerta('El presupuesto debe ser mayor a $0')
-    
-    if (props.gasto) {
-      // aactualizar gasto existente
-      props.gasto.nombre = nuevoGasto.nombre;
-      props.gasto.categoria = nuevoGasto.categoria;
-      props.gasto.fecha = nuevoGasto.fecha;
-      props.gasto.monto = nuevoGasto.monto;
-      emit('state-modal');
-    } else {
-      // agregar nuevo gasto
-      emit('tomar-data', { ...nuevoGasto });
-      emit('state-modal');
-    }
+
+    // always emit the gathered data; parent will determine whether it's a
+    // new gasto or an edit and update its state accordingly.
+    emit('tomar-data', { ...nuevoGasto });
   }
 </script>
 

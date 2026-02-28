@@ -44,17 +44,13 @@
 
   const handleGasto = (data) => {
     if (isEditing.value && gastoEditar.value) {
-      // update existing object
       Object.assign(gastoEditar.value, data);
     } else {
       props.data.gastos.push(data);
     }
-    // notify parent so it can sync/listen
     emit('guardar-gasto', data);
-    // reset modal state
-    modal.value = false;
-    isEditing.value = false;
-    gastoEditar.value = null;
+
+    stateModal();
   }
 
   const editarGasto = (data) => {
