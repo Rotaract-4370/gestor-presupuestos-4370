@@ -50,7 +50,7 @@
 
 <template>
   <div class="bg-black/50 fixed top-0 left-0 w-full min-h-screen flex justify-center items-center z-50">
-    <div class="relative w-full max-w-md gap-4 p-10 bg-white rounded-xl flex flex-col shadow-2xl">
+    <div class="relative md:w-2/3 w-5/6 gap-4 p-10 bg-white rounded-xl flex flex-col shadow-2xl">
       
       <i @click="emit('state-modal')" class="absolute top-4 right-4 bi bi-x-lg cursor-pointer"></i>
 

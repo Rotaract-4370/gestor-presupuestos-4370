@@ -161,9 +161,9 @@
       </div>
     </div>
     <!--  -->
-    <div class="flex flex-row gap-4 w-full">
+    <div class="flex flex-col md:flex-row gap-4 w-full">
       <div
-        class="bg-white px-6 py-5 rounded-2xl w-[65%] shadow-sm flex flex-col cont-secundary justify-between border border-gray-100"
+        class="bg-white px-6 py-5 rounded-2xl w-full md:w-[65%] shadow-sm flex flex-col cont-secundary justify-between border border-gray-100"
       >
 
         <p class="text-ms poppins-normal text-gray-600 mb-10">Detalles de Gastos</p>
@@ -210,7 +210,7 @@
       <!-- --------------------------- -->
       </div>
       <div
-        class="bg-white px-6 cont-secundary w-[35%] h-50 py-5 rounded-2xl shadow-sm flex flex-col justify-between border border-gray-100"
+        class="bg-white hidden md:block px-6 cont-secundary w-[35%] h-50 py-5 rounded-2xl shadow-sm flex-col justify-between border border-gray-100"
       >
         <p class="font-medium text-gray-600 mb-3">Resumen por Categoria</p>
         <ul class="space-y-2 text-sm">

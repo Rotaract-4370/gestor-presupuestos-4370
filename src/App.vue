@@ -109,7 +109,7 @@ watch(listaEventos, () => {
       </div>
       <BarraIntermedia @state-modal="stateModal" :modal="modal"/>
       <div 
-        class="grid w-full grid-cols-3 gap-4 p-10"
+        class="grid w-full grid-cols-1 md:grid-cols-3 gap-4 p-10"
       >
         <div 
           v-for="(item, index) in listaEventos"

@@ -27,7 +27,7 @@
     class="bg-black/50 fixed top-0 left-0 w-full min-h-screen flex justify-center items-center"
   >
     <div
-      class="relative w-1/3 h-auto gap-4 p-10 bg-white rounded-xl flex flex-col"
+      class="relative md:w-2/3 w-5/6 h-auto gap-4 p-10 bg-white rounded-xl flex flex-col"
     >
       <i 
         @click="$emit('stateModal')"
