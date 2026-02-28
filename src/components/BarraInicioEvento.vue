@@ -12,7 +12,7 @@
     class="flex flex-row w-full justify-between items-center"
   >
     <div
-      class="flex flex-row gap-3"
+      class="flex flex-row gap-3 w-full"
     >
       <i 
         @click="emit('gestion-evento')"
@@ -22,7 +22,7 @@
         "
       ></i>
       <div
-        class="flex flex-col justify-start"
+        class="flex flex-col justify-start w-full"
       >
         <p 
           class="md:text-xl capitalize poppins-normal truncate text-white"
@@ -36,7 +36,7 @@
       v-if="((gastadoEvento / props.data.presupuesto) * 100) !== 100"
       @click="emit('state-modal')"
       icono="bi bi-plus"
-      color="bg-slate-600 text-white hover:bg-slate-500 cursor-not-allowed"
+      color="bg-slate-600 text-white w-[25%] hover:bg-slate-500 cursor-not-allowed"
     >Agregar Gasto</Boton>
   </div>
 </template>
