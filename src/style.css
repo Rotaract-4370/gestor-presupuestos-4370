@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Colores */
+@import "./assets/color/Color.css";
+
+/* Fuentes */
+@import "./assets/fonts/Fonts.css";
+
+/* Shadows */
+@import "./assets/Style/Shadows.css";
