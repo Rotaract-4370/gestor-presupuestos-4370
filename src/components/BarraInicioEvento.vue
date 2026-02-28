@@ -25,7 +25,7 @@
         class="flex flex-col justify-start"
       >
         <p 
-          class="md:text-xl capitalize poppins-normal text-white"
+          class="md:text-xl capitalize poppins-normal truncate text-white"
         >{{ props.data.nombre }}</p>
         <p
           class="text-xs md:text-ms poppins-normal text-white/50"
