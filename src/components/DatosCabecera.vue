@@ -17,14 +17,14 @@
 <template>
   <div class="w-full flex flex-col gap-9">
     <div 
-      class="px-8 py-5 flex flex-row items-center justify-between rounded-xl w-full"
+      class="px-5 md:px-8 py-5 flex flex-row items-center justify-between rounded-xl w-full"
     >
       <p
-        class="poppins-normal font-bold text-xl text-gray-700"
+        class="poppins-normal font-bold text-[13px] md:text-xl text-gray-700"
       >{{ props.titulo }}</p>
       <i 
         :class=props.icono
-        class="text-2xl text-gray-700"
+        class="md:text-2xl text-gray-700"
       ></i>
     </div>
     <div class="flex flex-col px-8 w-full">

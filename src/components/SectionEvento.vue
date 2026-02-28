@@ -63,6 +63,12 @@
     isEditing.value = true;
     modal.value = true;
   }
+  const eliminarGasto = (index) => {
+  if (confirm('¿Estás seguro de eliminar este gasto?')) {
+    props.data.gastos.splice(index, 1) 
+    alert.message('Gasto eliminado con éxito')
+  }
+}
 
 </script>
 
@@ -106,7 +112,7 @@
       >Agregar Gasto</Boton>
     </div>
     <!--  -->
-    <div class="grid grid-cols-1 md:grid-cols-3 w-full gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-6">
       <div
         v-for="(item, index) in titulosEventos"
         :key="index"
@@ -128,22 +134,30 @@
           </p>
 
           <div v-if="item.nombre === 'Gastado'" class="mt-2 flex flex-row w-full justify-between items-center">
-            <p class="text-2xl poppins-normal text-gray-700">
+            <p class="text-xl md:text-2xl poppins-normal text-gray-700">
               {{formatearCadena(gastadoEvento)}}
             </p>
             <p 
-              class="text-[12px] text-gray-600 mt-1 uppercase"
+              class="text-[12px] text-gray-600 mt-1 uppercase hidden md:block"
               :class="{'text-red-600' : (gastadoEvento / props.data.presupuesto) * 100 > 80,
                 'text-green-600' : (gastadoEvento / props.data.presupuesto) * 100 < 80 && (gastadoEvento / props.data.presupuesto) * 100 > 0
               }"
             >
               {{ ((gastadoEvento / props.data.presupuesto) * 100) }}% consumido
             </p>
+            <p 
+              class="text-[12px] text-gray-600 mt-1 uppercase md:hidden"
+              :class="{'text-red-600' : (gastadoEvento / props.data.presupuesto) * 100 > 80,
+                'text-green-600' : (gastadoEvento / props.data.presupuesto) * 100 < 80 && (gastadoEvento / props.data.presupuesto) * 100 > 0
+              }"
+            >
+              {{ ((gastadoEvento / props.data.presupuesto) * 100) }}%
+            </p>
           </div>
           
           <div 
             v-if="item.nombre === 'Restante'"
-            class="flex flex-row w-full justify-between items-center"
+            class="flex flex-row w-full justify-between items-center "
             :class="(props.data.presupuesto - gastadoEvento) < 0 ? 'text-red-500' : 'text-green-600'"
           >
             <p class="text-2xl poppins-normal">
@@ -151,7 +165,7 @@
             </p>
             <p 
               v-if="item.nombre === 'Restante'"
-              class="text-xs font-medium"
+              class="text-xs font-medium hidden md:block"
             >
               {{ (props.data.presupuesto - gastadoEvento) < 0 ? 'Presupuesto excedido' : 'Disponible' }}
             </p>
@@ -163,7 +177,7 @@
     <!--  -->
     <div class="flex flex-col md:flex-row gap-4 w-full">
       <div
-        class="bg-white px-6 py-5 rounded-2xl w-full md:w-[65%] shadow-sm flex flex-col cont-secundary justify-between border border-gray-100"
+        class="overflow-x-auto bg-white px-6 py-5 rounded-2xl w-full md:w-[65%] shadow-sm flex flex-col cont-secundary justify-between border border-gray-100"
       >
 
         <p class="text-ms poppins-normal text-gray-600 mb-10">Detalles de Gastos</p>
@@ -203,7 +217,7 @@
               :key="index"
               :gasto="item"
               @editar-gasto="editarGasto"
-              @eliminar-gasto="() => props.data.gastos.splice(index, 1)"
+              @eliminar-gasto="eliminarGasto"
             />
           </tbody>
         </table>

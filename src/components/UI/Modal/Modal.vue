@@ -36,10 +36,10 @@
 
       <div>
         <p
-        class="text-xl text-shadow-gray-900 font-semibold"
+        class="md:text-xl text-shadow-gray-900 font-semibold"
         >Nuevo Evento</p>
         <span
-          class="text-sm text-gray-500 font-normal"
+          class="text-[12px] md:text-sm text-gray-500 font-normal"
         >Ingresa los datos del Evento</span>
       </div>
 

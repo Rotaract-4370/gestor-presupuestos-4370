@@ -87,7 +87,7 @@ watch(listaEventos, () => {
     />
     <div v-if="!gestion">
       <div
-        class="flex-col grid grid-cols-1 lg:grid-cols-4 md:flex-row justify-evenly gap-4 items-center p-10"
+        class="flex-col grid grid-cols-2 lg:grid-cols-4 md:flex-row justify-evenly gap-4 items-center p-10"
         :class="
           {' mt-19': modal === false}
         "

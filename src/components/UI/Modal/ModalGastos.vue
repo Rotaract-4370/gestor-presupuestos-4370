@@ -43,8 +43,18 @@
     if (Object.values(nuevoGasto).some(value => !value)) return tipoAlerta('Campos vacios')
     if (nuevoGasto.monto === 0) return tipoAlerta('El presupuesto debe ser mayor a $0')
     
-    emit('tomar-data', { ...nuevoGasto });
-    emit('state-modal');
+    if (props.gasto) {
+      // aactualizar gasto existente
+      props.gasto.nombre = nuevoGasto.nombre;
+      props.gasto.categoria = nuevoGasto.categoria;
+      props.gasto.fecha = nuevoGasto.fecha;
+      props.gasto.monto = nuevoGasto.monto;
+      emit('state-modal');
+    } else {
+      // agregar nuevo gasto
+      emit('tomar-data', { ...nuevoGasto });
+      emit('state-modal');
+    }
   }
 </script>
 
