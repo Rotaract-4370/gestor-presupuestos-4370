@@ -45,9 +45,12 @@ const gestionEvento = (data = null) => {
   return gestion.value = !gestion.value
 }
 const eliminarEvento = (data) => {
-  const index = listaEventos.indexOf(data)
-  if (index !== -1) {
-    listaEventos.splice(index, 1)
+  if (confirm('¿Estás seguro de eliminar este gasto?')) {
+    const index = listaEventos.indexOf(data)
+    if (index !== -1) {
+      listaEventos.splice(index, 1)
+      alert.message('Gasto eliminado con éxito')
+    }
   }
 }
 
